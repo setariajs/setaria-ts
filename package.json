@@ -25,7 +25,8 @@
     "start": "rollup -c rollup.config.ts -w",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "build-version": "npm version patch && git push"
   },
   "dependencies": {
     "axios": "^0.27.2",
