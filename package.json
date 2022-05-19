@@ -1,5 +1,5 @@
 {
-  "name": "setaria-ts",
+  "name": "@setaria/setaria-ts",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
@@ -9,7 +9,7 @@
   "files": [
     "dist"
   ],
-  "author": "tenbamboo <liu19891014@163.com>",
+  "author": "setariajs",
   "repository": {
     "type": "git",
     "url": ""
