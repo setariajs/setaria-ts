@@ -6,7 +6,7 @@ import { setupHttp } from "./http/";
 import { setupGloablErrorHandle } from "./error/";
 
 import type { App } from "vue";
-import type { ViteEnv, FrameworkConfig } from "./types"
+import type { ViteEnv, FrameworkConfig } from "./types/"
 
 
 export class Setaria {
@@ -45,5 +45,6 @@ export { store } from "./store/";
 export { router } from "./router/";
 export { ServiceError } from "./error/ServiceError";
 export { ApplicationError } from "./error/ApplicationError";
+export type { ViteEnv, FrameworkConfig, HttpConfig, InterceptorRaw } from "./types/";
 
 

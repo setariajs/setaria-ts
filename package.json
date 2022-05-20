@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "",
   "keywords": [],
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es5.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm-bundler.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.global.js",
   "files": [
     "dist"
   ],
@@ -25,7 +26,8 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+    "build2": "yarn prebuild && rollup -c rollup.config.ts",
+    "build:dts": "api-extractor run --local --verbose",
     "start": "rollup -c rollup.config.ts -w",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -44,6 +46,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
+    "@microsoft/api-extractor": "^7.24.1",
     "@rollup/plugin-commonjs": "22.0.0",
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.3.0",
@@ -70,6 +73,7 @@
     "replace-in-file": "^3.4.2",
     "rimraf": "^2.6.2",
     "rollup": "^2.73.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-typescript2": "^0.31.2",
     "semantic-release": "^15.9.16",

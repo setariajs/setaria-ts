@@ -33,10 +33,10 @@
 
     "strict": true,
     "sourceMap": true,
-    "declaration": true,
+   
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    // "emitDecoratorMetadata": true,
 
     
     "allowJs": true,
@@ -48,15 +48,20 @@
     "importHelpers": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist/lib",
+    // "declaration": true,
+    // "declarationDir": "dist/types",
+    // "outDir": "dist/lib",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "dist",
     // "typeRoots": [
-    //   // "node_modules/@types",
-    //   "types"
+    //   "node_modules/@types",
+    //   "src/types"
     // ]
   },
-  "include": [
-    "src",
-    "types",
-  ]
+  "include": [ "src/**/*.ts"],
+  // "include": [
+  //   "src",
+  //   "types",
+  // ]
 }
