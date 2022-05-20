@@ -1,6 +1,5 @@
 import path from 'path'
 import ts from 'rollup-plugin-typescript2'
-// import replace from '@rollup/plugin-replace'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
@@ -73,11 +72,7 @@ function createConfig(format, output, plugins = []) {
     // '@vue/devtools-api': 'VueDevtoolsApi',
   }
 
-  const isProductionBuild = /\.prod\.js$/.test(output.file)
   const isGlobalBuild = format === 'global'
-  const isRawESMBuild = format === 'esm'
-  const isNodeBuild = format === 'cjs'
-  const isBundlerESMBuild = /esm-bundler/.test(format)
 
   if (isGlobalBuild) output.name = 'Setaria'
 
@@ -117,71 +112,16 @@ function createConfig(format, output, plugins = []) {
 
   return {
     input: `src/index.ts`,
-    // Global and Browser ESM builds inlines everything so that they can be
-    // used alone.
     external,
     plugins: [
       tsPlugin,
-      // createReplacePlugin(
-      //   isProductionBuild,
-      //   isBundlerESMBuild,
-      //   // isBrowserBuild?
-      //   isGlobalBuild || isRawESMBuild || isBundlerESMBuild,
-      //   isGlobalBuild,
-      //   isNodeBuild
-      // ),
       ...nodePlugins,
       ...plugins,
     ],
     output,
-    // onwarn: (msg, warn) => {
-    //   if (!/Circular/.test(msg)) {
-    //     warn(msg)
-    //   }
-    // },
   }
 }
 
-// function createReplacePlugin(
-//   isProduction,
-//   isBundlerESMBuild,
-//   isBrowserBuild,
-//   isGlobalBuild,
-//   isNodeBuild
-// ) {
-//   const replacements = {
-//     __COMMIT__: `"${process.env.COMMIT}"`,
-//     __VERSION__: `"${pkg.version}"`,
-//     __DEV__: isBundlerESMBuild
-//       ? // preserve to be handled by bundlers
-//         `(process.env.NODE_ENV !== 'production')`
-//       : // hard coded dev/prod builds
-//         JSON.stringify(!isProduction),
-//     // this is only used during tests
-//     __TEST__: 'false',
-//     // If the build is expected to run directly in the browser (global / esm builds)
-//     __BROWSER__: isBrowserBuild,
-//     __FEATURE_PROD_DEVTOOLS__: isBundlerESMBuild
-//       ? `__VUE_PROD_DEVTOOLS__`
-//       : 'false',
-//     // is targeting bundlers?
-//     __BUNDLER__: JSON.stringify(isBundlerESMBuild),
-//     __GLOBAL__: JSON.stringify(isGlobalBuild),
-//     // is targeting Node (SSR)?
-//     __NODE_JS__: JSON.stringify(isNodeBuild),
-//   }
-//   // allow inline overrides like
-//   //__RUNTIME_COMPILE__=true yarn build
-//   Object.keys(replacements).forEach(key => {
-//     if (key in process.env) {
-//       replacements[key] = process.env[key]
-//     }
-//   })
-//   return replace({
-//     preventAssignment: true,
-//     values: replacements,
-//   })
-// }
 
 function createProductionConfig(format) {
   return createConfig(format, {
@@ -191,21 +131,11 @@ function createProductionConfig(format) {
 }
 
 function createMinifiedConfig(format) {
-  // const { terser } = require('rollup-plugin-terser')
   return createConfig(
     format,
     {
       file: `dist/${name}.${format}.prod.js`,
       format: outputConfigs[format].format,
     },
-    // [
-    //   terser({
-    //     module: /^esm/.test(format),
-    //     compress: {
-    //       ecma: 2015,
-    //       pure_getters: true,
-    //     },
-    //   }),
-    // ]
   )
 }
