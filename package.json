@@ -26,7 +26,7 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build2": "yarn prebuild && rollup -c rollup.config.ts",
+    "build": "yarn prebuild && rollup -c rollup.config.ts",
     "build:dts": "api-extractor run --local --verbose",
     "start": "rollup -c rollup.config.ts -w",
     "docs:dev": "vitepress dev docs",
