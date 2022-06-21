@@ -14,7 +14,7 @@ yarn build:dts
 
 ```cmd
 
-yarn build-verion
+yarn build-version
 
 npm publish
 
