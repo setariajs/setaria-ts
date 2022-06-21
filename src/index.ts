@@ -3,6 +3,7 @@ import { createApp } from "vue";
 import { setupRouter } from "./router/";
 import { setupStore } from "./store/";
 import { setupHttp } from "./http/";
+import { setupI18n } from "./i18n/";
 import { setupGloablErrorHandle } from "./error/";
 
 import type { App } from "vue";
@@ -24,10 +25,11 @@ export class Setaria {
 
     setupRouter(app, config, envParmas);
 
-    // setupUI(app);
+    setupHttp(config);
+
+    setupI18n(app,config);
 
     setupGloablErrorHandle(app, config);
-
 
     this.config = config;
     this.app = app;
@@ -43,6 +45,7 @@ export class Setaria {
 export { http } from "./http/";
 export { store } from "./store/";
 export { router } from "./router/";
+export { i18n } from "./i18n/";
 export { ServiceError } from "./error/ServiceError";
 export { ApplicationError } from "./error/ApplicationError";
 export type { ViteEnv, FrameworkConfig, HttpConfig, InterceptorRaw } from "./types/";

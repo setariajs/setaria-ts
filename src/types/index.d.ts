@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from "vue-router";
 import type { AxiosRequestConfig } from "axios";
-
+import type { I18nOptions } from 'vue-i18n'
 
 export interface ViteEnv {
   VITE_PORT: number;
@@ -18,6 +18,7 @@ export interface FrameworkConfig {
   render: any;
   routes: Nullable<RouteRecordRaw[]>;
   http: HttpConfig[];
+  i18n?: I18nOptions;
   errorHandler: Function;
 }
 
