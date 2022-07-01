@@ -15,9 +15,14 @@ export class Setaria {
   config: FrameworkConfig;
   app: App<Element>
 
-  constructor(config: FrameworkConfig, envParmas: ViteEnv) {
+  constructor(config: FrameworkConfig, envParmas: ViteEnv, outterApp: App) {
     // console.log("init Framework start");
-    const app = createApp(config.render)
+    let app;
+    if (outterApp) {
+      app = outterApp;
+    } else {
+      app = createApp(config.render);
+    }
 
     setupStore(app);
 
@@ -27,7 +32,7 @@ export class Setaria {
 
     setupHttp(config);
 
-    setupI18n(app,config);
+    setupI18n(app, config);
 
     setupGloablErrorHandle(app, config);
 
