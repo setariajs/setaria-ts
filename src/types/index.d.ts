@@ -3,12 +3,12 @@ import type { AxiosRequestConfig } from "axios";
 import type { I18nOptions } from 'vue-i18n'
 
 export interface ViteEnv {
-  VITE_PORT: number;
-  VITE_PUBLIC_PATH: string;
-  VITE_LEGACY: boolean;
-  VITE_ROUTER_HISTORY: string;
-  VITE_APP_SSO_BASE_URL: string;
-  VITE_APP_SITE_ID: string;
+  VITE_PORT?: number;
+  VITE_PUBLIC_PATH?: string;
+  VITE_LEGACY?: boolean;
+  VITE_ROUTER_HISTORY?: string;
+  VITE_APP_SSO_BASE_URL?: string;
+  VITE_APP_SITE_ID?: string;
 }
 
 
