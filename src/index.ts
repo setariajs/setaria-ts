@@ -15,7 +15,7 @@ export class Setaria {
   config: FrameworkConfig;
   app: App<Element>
 
-  constructor(config: FrameworkConfig, envParmas: ViteEnv, outterApp?: App<Element>) {
+  constructor(config: FrameworkConfig, envParams: ViteEnv, outterApp?: App<Element>) {
     // console.log("init Framework start");
     let app;
     if (outterApp) {
@@ -28,7 +28,7 @@ export class Setaria {
 
     setupHttp(config);
 
-    setupRouter(app, config, envParmas);
+    setupRouter(app, config, envParams);
 
     setupHttp(config);
 

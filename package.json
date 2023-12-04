@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
@@ -35,14 +35,13 @@
     "build-version": "npm version patch && git push"
   },
   "dependencies": {
-    "axios": "^0.27.2",
-    "element-plus": "^2.2.0",
+    "axios": "^1.6.2",
     "lodash-es": "^4.17.21",
-    "pinia": "^2.0.14",
-    "vue": "^3.2.33",
-    "vue-i18n": "9",
-    "vue-router": "^4.0.15",
-    "vue-types": "^4.1.1"
+    "pinia": "^2.1.7",
+    "vue": "^3.3.9",
+    "vue-i18n": "9.8.0",
+    "vue-router": "^4.2.5",
+    "vue-types": "^5.1.1"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.24.1",

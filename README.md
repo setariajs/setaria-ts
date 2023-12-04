@@ -4,9 +4,9 @@
 ## 打包 
 
 ```cmd
-yarn build
+pnpm run build
 
-yarn build:dts
+pnpm run build:dts
 
 ```
 
@@ -14,7 +14,7 @@ yarn build:dts
 
 ```cmd
 
-yarn build-version
+pnpm run build-version
 
 npm publish
 
