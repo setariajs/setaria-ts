@@ -5,7 +5,7 @@ import {
   createWebHashHistory,
   RouterHistory,
 } from "vue-router";
-import type { ViteEnv, FrameworkConfig } from "../types"
+import type { ViteEnv, FrameworkConfig } from "../types";
 
 import type { App } from "vue";
 
@@ -26,20 +26,22 @@ function getHistoryMode(envParmas: ViteEnv): RouterHistory {
 export let router: Router;
 
 function createRouter(config: FrameworkConfig, envParmas: ViteEnv) {
-  router = createGlobalRouter({
-    history: getHistoryMode(envParmas),
-    routes: config?.routes || [],
-    strict: true,
-    scrollBehavior(_to, _from, savedPosition) {
-      return new Promise((resolve) => {
-        if (savedPosition) {
-          resolve(savedPosition);
-        } else {
-          resolve({ left: 0, top: 0 });
-        }
-      });
-    },
-  });
+  if (config?.routes) {
+    router = createGlobalRouter({
+      history: getHistoryMode(envParmas),
+      routes: config?.routes || [],
+      strict: true,
+      scrollBehavior(_to, _from, savedPosition) {
+        return new Promise((resolve) => {
+          if (savedPosition) {
+            resolve(savedPosition);
+          } else {
+            resolve({ left: 0, top: 0 });
+          }
+        });
+      },
+    });
+  }
 }
 
 export const setupRouter = function (app: App, config: FrameworkConfig, envParmas: ViteEnv) {
