@@ -26,26 +26,27 @@ function getHistoryMode(envParmas: ViteEnv): RouterHistory {
 export let router: Router;
 
 function createRouter(config: FrameworkConfig, envParmas: ViteEnv) {
-  if (config?.routes) {
-    router = createGlobalRouter({
-      history: getHistoryMode(envParmas),
-      routes: config?.routes || [],
-      strict: true,
-      scrollBehavior(_to, _from, savedPosition) {
-        return new Promise((resolve) => {
-          if (savedPosition) {
-            resolve(savedPosition);
-          } else {
-            resolve({ left: 0, top: 0 });
-          }
-        });
-      },
-    });
-  }
+  router = createGlobalRouter({
+    history: getHistoryMode(envParmas),
+    routes: config?.routes || [],
+    strict: true,
+    scrollBehavior(_to, _from, savedPosition) {
+      return new Promise((resolve) => {
+        if (savedPosition) {
+          resolve(savedPosition);
+        } else {
+          resolve({ left: 0, top: 0 });
+        }
+      });
+    },
+  });
 }
 
 export const setupRouter = function (app: App, config: FrameworkConfig, envParmas: ViteEnv) {
-  createRouter(config, envParmas);
-  app.use(router);
-  return router.isReady();
+  if (config?.routes) {
+    createRouter(config, envParmas);
+    app.use(router);
+    return router.isReady();
+  }
+  return null;
 };
