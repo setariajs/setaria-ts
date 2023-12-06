@@ -16,7 +16,7 @@ pnpm run build:dts
 
 pnpm run build-version
 
-npm publish
+npm publish --registry=https://registry.npmjs.org/
 
 
 ```
