@@ -6,8 +6,7 @@ import { ServiceError } from "./ServiceError";
 
 import { ApplicationError } from "./ApplicationError";
 
-import type { Nullable, FrameworkConfig } from "../types"
-
+import type { Nullable, FrameworkConfig } from "../types";
 
 let globalConfig: Nullable<FrameworkConfig> = null;
 
@@ -64,21 +63,24 @@ function scriptErrorHandler(event: Event | string) {
 }
 
 function registerPromiseErrorHandler() {
-  window.addEventListener(
-    "unhandledrejection",
-    function (err) {
-      processHandleError(ERROR_THROW_TYPES.PROMISE_UNREJECT_ERROR, err);
-    },
-    true,
-  );
+  if (window) {
+    window.addEventListener(
+      "unhandledrejection",
+      function (err) {
+        processHandleError(ERROR_THROW_TYPES.PROMISE_UNREJECT_ERROR, err);
+      },
+      true,
+    );
+  }
 }
 
 export const setupGloablErrorHandle = (app: App, config: FrameworkConfig) => {
   globalConfig = config;
 
   app.config.errorHandler = vueErrorHandler;
-
-  window.onerror = scriptErrorHandler;
+  if (window) {
+    window.onerror = scriptErrorHandler;
+  }
 
   registerPromiseErrorHandler();
 
