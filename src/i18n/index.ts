@@ -6,6 +6,8 @@ import type { I18nOptions } from "vue-i18n";
 export let i18n;
 
 export const setupI18n = function (app: App, config: FrameworkConfig) {
-  i18n = createI18n(config?.i18n as I18nOptions);
-  app.use(i18n);
+  if (config?.i18n) {
+    i18n = createI18n(config?.i18n as I18nOptions);
+    app.use(i18n);
+  }
 };
