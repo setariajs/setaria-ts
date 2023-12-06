@@ -1,4 +1,4 @@
-import { isEmpty } from "lodash-es";
+import { isEmpty } from "lodash-unified";
 import AbstractError from "./AbstractError";
 import Message from "./Message";
 

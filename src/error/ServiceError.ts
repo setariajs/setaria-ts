@@ -4,7 +4,7 @@
 import AbstractError from "./AbstractError";
 import Message from "./Message";
 
-import { isEmpty } from "lodash-es";
+import { isEmpty } from "lodash-unified";
 
 import type { Nullable } from "../types"
 

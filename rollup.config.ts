@@ -96,7 +96,7 @@ function createConfig(format, output, plugins = []) {
   // during a single build.
   hasTSChecked = true
 
-  const external = ['axios', 'lodash-es', 'pinia', 'vue', 'vue-router', 'vue-types', 'element-plus']
+  const external = ['axios', 'lodash-unified', 'pinia', 'vue', 'vue-router', 'vue-types', 'element-plus']
   if (!isGlobalBuild) {
     external.push('@vue/devtools-api')
   }

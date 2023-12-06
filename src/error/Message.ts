@@ -1,5 +1,5 @@
 /* @flow */
-import { isEmpty } from "lodash-es";
+import { isEmpty } from "lodash-unified";
 
 import type { Recordable } from "../types"
 
