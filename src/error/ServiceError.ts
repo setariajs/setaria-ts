@@ -10,7 +10,7 @@ import type { Nullable } from "../types"
 
 export class ServiceError extends AbstractError {
   // Convenient for back-end Troubleshooting: unique request ID
-  detail?: Object;
+  detail?: any;
   constructor(errorCode?: string, errorMessage?: Nullable<string>, extendsData?: Object) {
     let msg = errorMessage;
     // 系统自定义消息
