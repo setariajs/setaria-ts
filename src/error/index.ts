@@ -63,7 +63,7 @@ function scriptErrorHandler(event: Event | string) {
 }
 
 function registerPromiseErrorHandler() {
-  if (window) {
+  if (typeof window !== 'undefined') {
     window.addEventListener(
       "unhandledrejection",
       function (err) {
@@ -78,7 +78,7 @@ export const setupGloablErrorHandle = (app: App, config: FrameworkConfig) => {
   globalConfig = config;
 
   app.config.errorHandler = vueErrorHandler;
-  if (window) {
+  if (typeof window !== 'undefined') {
     window.onerror = scriptErrorHandler;
   }
 
