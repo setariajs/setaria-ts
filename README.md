@@ -1,4 +1,4 @@
-# 基于Setaria.js的Ts重构 - 乞丐版
+# 基于Setaria.js的Ts重构版
 
 
 ## 打包 
