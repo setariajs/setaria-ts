@@ -19,7 +19,7 @@ export interface FrameworkConfig {
   routes: Nullable<RouteRecordRaw[]>;
   http: HttpConfig[];
   i18n?: I18nOptions;
-  errorHandler: Function;
+  errorHandler?: Function;
 }
 
 
